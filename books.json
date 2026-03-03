@@ -1,0 +1,144 @@
+/*
+ * ╔═══════════════════════════════════════════════════════════════════════════╗
+ * ║                    ИНСТРУКЦИЯ ПО ДОБАВЛЕНИЮ НОВЫХ КНИГ                    ║
+ * ║                                                                           ║
+ * ║  Этот файл содержит список всех аудиокниг в библиотеке.                   ║
+ * ║  Чтобы добавить новую книгу, выполните следующие шаги:                    ║
+ * ║                                                                           ║
+ * ║  1. Найдите последнюю книгу в списке (перед закрывающей скобкой ] )       ║
+ * ║  2. После последней книги поставьте запятую: ,                            ║
+ * ║  3. Скопируйте шаблон ниже и вставьте его после запятой                   ║
+ * ║  4. Заполните все поля своими данными                                     ║
+ * ║  5. Сохраните файл и загрузите на GitHub                                  ║
+ * ║                                                                           ║
+ * ║  ШАБЛОН НОВОЙ КНИГИ:                                                      ║
+ * ║  ─────────────────────────────────────────────────────────────────────    ║
+ * ║  {                                                                        ║
+ * ║    "title": "Название книги",                                             ║
+ * ║    "author": "Фамилия Имя автора",                                        ║
+ * ║    "class": 7,                                                            ║
+ * ║    "genre": "Роман",                                                      ║
+ * ║    "coverUrl": "https://ссылка-на-обложку.jpg",                           ║
+ * ║    "audioUrl": "https://ссылка-на-аудиокнигу"                             ║
+ * ║  }                                                                        ║
+ * ║  ─────────────────────────────────────────────────────────────────────    ║
+ * ║                                                                           ║
+ * ║  ПОЯСНЕНИЯ К ПОЛЯМ:                                                       ║
+ * ║  • title    - полное название произведения (в кавычках)                   ║
+ * ║  • author   - автор в формате "Фамилия Имя" (в кавычках)                  ║
+ * ║  • class    - номер класса: 7, 8 или 9 (БЕЗ кавычек, просто число!)       ║
+ * ║  • genre    - жанр: Роман, Поэма, Повесть, Рассказ, Пьеса и т.д.          ║
+ * ║  • coverUrl - ссылка на изображение обложки (JPG, PNG, WebP)              ║
+ * ║  • audioUrl - ссылка на аудиокнигу (YouTube, MP3, веб-сайт)              ║
+ * ║                                                                           ║
+ * ║  ГДЕ НАЙТИ ОБЛОЖКИ:                                                       ║
+ * ║  • Google Картинки - искать обложки книг                                  ║
+ * ║  • Википедия - статьи о книгах часто содержат обложки                     ║
+ * ║  • Литрес - https://www.litres.ru (скопировать URL изображения)          ║
+ * ║                                                                           ║
+ * ║  ГДЕ НАЙТИ АУДИОКНИГИ:                                                    ║
+ * ║  • YouTube - много бесплатных аудиокниг                                   ║
+ * ║  • Сказки.РФ - https://skazki-rf.ru                                       ║
+ * ║  • Аудиокниги.РФ - https://audioknigi.club                                ║
+ * ║                                                                           ║
+ * ╚═══════════════════════════════════════════════════════════════════════════╝
+ */
+
+[
+  {
+    "title": "Капитанская дочка",
+    "author": "Пушкин Александр",
+    "class": 8,
+    "genre": "Роман",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kapitanskaya_dochka_cover.jpg/220px-Kapitanskaya_dochka_cover.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=капитанская+дочка+аудиокнига"
+  },
+  {
+    "title": "Мцыри",
+    "author": "Лермонтов Михаил",
+    "class": 8,
+    "genre": "Поэма",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Mtsyri_by_Lermontov_title_page.jpg/220px-Mtsyri_by_Lermontov_title_page.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=мцыри+аудиокнига"
+  },
+  {
+    "title": "Ревизор",
+    "author": "Гоголь Николай",
+    "class": 8,
+    "genre": "Пьеса",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Gogol_Revizor_title_page_1836.jpg/220px-Gogol_Revizor_title_page_1836.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=ревизор+гоголь+аудиокнига"
+  },
+  {
+    "title": "Тарас Бульба",
+    "author": "Гоголь Николай",
+    "class": 7,
+    "genre": "Повесть",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Gogol_taras_bulba_cover.jpg/220px-Gogol_taras_bulba_cover.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=тарас+бульба+аудиокнига"
+  },
+  {
+    "title": "Преступление и наказание",
+    "author": "Достоевский Фёдор",
+    "class": 9,
+    "genre": "Роман",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Crime_and_Punishment_cover_1867.jpg/220px-Crime_and_Punishment_cover_1867.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=преступление+и+наказание+аудиокнига"
+  },
+  {
+    "title": "Герой нашего времени",
+    "author": "Лермонтов Михаил",
+    "class": 9,
+    "genre": "Роман",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Lermontov_Geroy_nashego_vremeni_cover.jpg/220px-Lermontov_Geroy_nashego_vremeni_cover.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=герой+нашего+времени+аудиокнига"
+  },
+  {
+    "title": "Война и мир",
+    "author": "Толстой Лев",
+    "class": 9,
+    "genre": "Роман-эпопея",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/War_and_peace_book_cover.jpg/220px-War_and_peace_book_cover.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=война+и+мир+аудиокнига"
+  },
+  {
+    "title": "Бесприданница",
+    "author": "Островский Александр",
+    "class": 9,
+    "genre": "Пьеса",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Ostrovsky_Bespridannitsa_1879.jpg/220px-Ostrovsky_Bespridannitsa_1879.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=бесприданница+аудиокнига"
+  },
+  {
+    "title": "Евгений Онегин",
+    "author": "Пушкин Александр",
+    "class": 9,
+    "genre": "Роман в стихах",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Eugene_Onegin_cover_1833.jpg/220px-Eugene_Onegin_cover_1833.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=евгений+онегин+аудиокнига"
+  },
+  {
+    "title": "Скупой рыцарь",
+    "author": "Пушкин Александр",
+    "class": 7,
+    "genre": "Драма",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kapitanskaya_dochka_cover.jpg/220px-Kapitanskaya_dochka_cover.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=скупой+рыцарь+аудиокнига"
+  },
+  {
+    "title": "Бедная Лиза",
+    "author": "Карамзин Николай",
+    "class": 7,
+    "genre": "Повесть",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Karamzin_Poor_Lisa.jpg/220px-Karamzin_Poor_Lisa.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=бедная+лиза+аудиокнига"
+  },
+  {
+    "title": "Метель",
+    "author": "Пушкин Александр",
+    "class": 7,
+    "genre": "Повесть",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kapitanskaya_dochka_cover.jpg/220px-Kapitanskaya_dochka_cover.jpg",
+    "audioUrl": "https://www.youtube.com/results?search_query=метель+пушкин+аудиокнига"
+  }
+]
