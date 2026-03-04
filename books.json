@@ -5,7 +5,7 @@
     "class": 8,
     "genre": "Роман",
     "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kapitanskaya_dochka_cover.jpg/220px-Kapitanskaya_dochka_cover.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=капитанская+дочка+аудиокнига"
+    "audioUrl": "https://akniga.org/pushkin-aleksandr-kapitanskaya-dochka-3"
   },
   {
     "title": "Мцыри",
@@ -13,7 +13,7 @@
     "class": 8,
     "genre": "Поэма",
     "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Mtsyri_by_Lermontov_title_page.jpg/220px-Mtsyri_by_Lermontov_title_page.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=мцыри+аудиокнига"
+    "audioUrl": "https://akniga.org/lermontov-mihail-mcyri-1"
   },
   {
     "title": "Ревизор",
@@ -21,7 +21,7 @@
     "class": 8,
     "genre": "Пьеса",
     "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Gogol_Revizor_title_page_1836.jpg/220px-Gogol_Revizor_title_page_1836.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=ревизор+гоголь+аудиокнига"
+    "audioUrl": "https://akniga.org/gogol-nikolay-revizor-1"
   },
   {
     "title": "Тарас Бульба",
@@ -29,7 +29,7 @@
     "class": 7,
     "genre": "Повесть",
     "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Gogol_taras_bulba_cover.jpg/220px-Gogol_taras_bulba_cover.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=тарас+бульба+аудиокнига"
+    "audioUrl": "https://akniga.org/gogol-nv-taras-bulba"
   },
   {
     "title": "Преступление и наказание",
@@ -45,7 +45,7 @@
     "class": 9,
     "genre": "Роман",
     "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Lermontov_Geroy_nashego_vremeni_cover.jpg/220px-Lermontov_Geroy_nashego_vremeni_cover.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=герой+нашего+времени+аудиокнига"
+    "audioUrl": "https://akniga.org/lermontov-mihail-geroy-nashego-vremeni-2"
   },
   {
     "title": "Война и мир",
@@ -69,7 +69,7 @@
     "class": 9,
     "genre": "Роман в стихах",
     "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Eugene_Onegin_cover_1833.jpg/220px-Eugene_Onegin_cover_1833.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=евгений+онегин+аудиокнига"
+    "audioUrl": "https://akniga.org/pushkin-as-evgeniy-onegin"
   },
   {
     "title": "Скупой рыцарь",
@@ -85,7 +85,7 @@
     "class": 7,
     "genre": "Повесть",
     "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Karamzin_Poor_Lisa.jpg/220px-Karamzin_Poor_Lisa.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=бедная+лиза+аудиокнига"
+    "audioUrl": "https://akniga.org/karamzin-nikolay-bednaya-liza-1"
   },
   {
     "title": "Метель",
