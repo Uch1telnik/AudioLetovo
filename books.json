@@ -4,7 +4,7 @@
     "author": "Пушкин Александр",
     "class": 8,
     "genre": "Роман",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kapitanskaya_dochka_cover.jpg/220px-Kapitanskaya_dochka_cover.jpg",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2025/09/05/15/preview/586539e1b4f7ff6d76ce_400x.jpg",
     "audioUrl": "https://akniga.org/pushkin-aleksandr-kapitanskaya-dochka-3"
   },
   {
@@ -12,7 +12,7 @@
     "author": "Лермонтов Михаил",
     "class": 8,
     "genre": "Поэма",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Mtsyri_by_Lermontov_title_page.jpg/220px-Mtsyri_by_Lermontov_title_page.jpg",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2020/04/03/08/preview/f48097979ebedf029c3b_400x.jpg",
     "audioUrl": "https://akniga.org/lermontov-mihail-mcyri-1"
   },
   {
@@ -20,7 +20,7 @@
     "author": "Гоголь Николай",
     "class": 8,
     "genre": "Пьеса",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Gogol_Revizor_title_page_1836.jpg/220px-Gogol_Revizor_title_page_1836.jpg",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2021/08/18/14/preview/6b5ccd86d0a87f8e878d_400x.jpg",
     "audioUrl": "https://akniga.org/gogol-nikolay-revizor-1"
   },
   {
@@ -28,71 +28,31 @@
     "author": "Гоголь Николай",
     "class": 7,
     "genre": "Повесть",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Gogol_taras_bulba_cover.jpg/220px-Gogol_taras_bulba_cover.jpg",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2019/05/13/13/preview/ec654ff2e9d00aaeb452_400x.jpg",
     "audioUrl": "https://akniga.org/gogol-nv-taras-bulba"
-  },
-  {
-    "title": "Преступление и наказание",
-    "author": "Достоевский Фёдор",
-    "class": 9,
-    "genre": "Роман",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Crime_and_Punishment_cover_1867.jpg/220px-Crime_and_Punishment_cover_1867.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=преступление+и+наказание+аудиокнига"
   },
   {
     "title": "Герой нашего времени",
     "author": "Лермонтов Михаил",
     "class": 9,
     "genre": "Роман",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Lermontov_Geroy_nashego_vremeni_cover.jpg/220px-Lermontov_Geroy_nashego_vremeni_cover.jpg",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2024/04/02/13/preview/dd9c243dde50f39c2441_400x.jpg",
     "audioUrl": "https://akniga.org/lermontov-mihail-geroy-nashego-vremeni-2"
-  },
-  {
-    "title": "Война и мир",
-    "author": "Толстой Лев",
-    "class": 9,
-    "genre": "Роман-эпопея",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/War_and_peace_book_cover.jpg/220px-War_and_peace_book_cover.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=война+и+мир+аудиокнига"
-  },
-  {
-    "title": "Бесприданница",
-    "author": "Островский Александр",
-    "class": 9,
-    "genre": "Пьеса",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Ostrovsky_Bespridannitsa_1879.jpg/220px-Ostrovsky_Bespridannitsa_1879.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=бесприданница+аудиокнига"
   },
   {
     "title": "Евгений Онегин",
     "author": "Пушкин Александр",
     "class": 9,
     "genre": "Роман в стихах",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Eugene_Onegin_cover_1833.jpg/220px-Eugene_Onegin_cover_1833.jpg",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2020/10/02/10/preview/d6962d29d6d29aa3d81c_400x.jpg",
     "audioUrl": "https://akniga.org/pushkin-as-evgeniy-onegin"
-  },
-  {
-    "title": "Скупой рыцарь",
-    "author": "Пушкин Александр",
-    "class": 7,
-    "genre": "Драма",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kapitanskaya_dochka_cover.jpg/220px-Kapitanskaya_dochka_cover.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=скупой+рыцарь+аудиокнига"
   },
   {
     "title": "Бедная Лиза",
     "author": "Карамзин Николай",
     "class": 7,
     "genre": "Повесть",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Karamzin_Poor_Lisa.jpg/220px-Karamzin_Poor_Lisa.jpg",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2020/12/26/12/preview/676c3704ee02bbe8c797_400x.jpg",
     "audioUrl": "https://akniga.org/karamzin-nikolay-bednaya-liza-1"
-  },
-  {
-    "title": "Метель",
-    "author": "Пушкин Александр",
-    "class": 7,
-    "genre": "Повесть",
-    "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kapitanskaya_dochka_cover.jpg/220px-Kapitanskaya_dochka_cover.jpg",
-    "audioUrl": "https://www.youtube.com/results?search_query=метель+пушкин+аудиокнига"
   }
 ]

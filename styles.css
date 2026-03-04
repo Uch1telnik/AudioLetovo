@@ -76,7 +76,7 @@ header p {
 
 /* Иконка фильтра */
 .filters h2::before {
-  content: "📚";
+  content: "";
   font-size: 1.2rem;
 }
 
