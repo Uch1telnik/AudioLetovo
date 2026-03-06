@@ -50,10 +50,26 @@
   {
     "title": "После бала",
     "author": "Толстой Лев",
-    "class": 9,
-    "genre": "Роман в стихах",
+    "class": 7,
+    "genre": "Рассказ",
     "coverUrl": "https://akniga.org/uploads/media/topic/2020/07/01/15/preview/2213cbe72241216d8ecf_400x.jpg",
     "audioUrl": "https://akniga.org/tolstoy-lev-posle-bala-1"
+  },
+  {
+    "title": "Записки Охотника",
+    "author": "Тургенев Иван",
+    "class": 7,
+    "genre": "Цикл рассказов",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2019/03/22/09/preview/883404df503addd6042b_400x.jpg",
+    "audioUrl": "https://akniga.org/turgenev-ivan-zapiski-ohotnika"
+  },
+  {
+    "title": "Хитроумный идальго Дон Кихот Ламанчский",
+    "author": "Сервантес Мигель де",
+    "class": 7,
+    "genre": "Роман",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2021/07/21/10/preview/8682fa07dfd011354fe0_400x.jpg",
+    "audioUrl": "https://akniga.org/servantes-migel-de-hitroumnyy-idalgo-don-kihot-lamanchskiy-2"
   },
   {
     "title": "Бедная Лиза",
