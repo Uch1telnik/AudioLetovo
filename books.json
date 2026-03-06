@@ -48,9 +48,17 @@
     "audioUrl": "https://akniga.org/pushkin-as-evgeniy-onegin"
   },
   {
+    "title": "После бала",
+    "author": "Толстой Лев",
+    "class": 9,
+    "genre": "Роман в стихах",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2020/07/01/15/preview/2213cbe72241216d8ecf_400x.jpg",
+    "audioUrl": "https://akniga.org/tolstoy-lev-posle-bala-1"
+  },
+  {
     "title": "Бедная Лиза",
     "author": "Карамзин Николай",
-    "class": 7,
+    "class": 8,
     "genre": "Повесть",
     "coverUrl": "https://akniga.org/uploads/media/topic/2020/12/26/12/preview/676c3704ee02bbe8c797_400x.jpg",
     "audioUrl": "https://akniga.org/karamzin-nikolay-bednaya-liza-1"
