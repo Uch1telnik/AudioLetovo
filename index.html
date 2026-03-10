@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <!-- ================================================
          БИБЛИОТЕКА АУДИОКНИГ ДЛЯ ШКОЛЬНИКОВ 7-9 КЛАССОВ
@@ -7,45 +8,37 @@
          Этот файл содержит структуру страницы библиотеки.
          Для изменения данных книг редактируйте файл books.json
          ================================================ -->
-    
+
     <!-- Кодировка символов -->
     <meta charset="UTF-8">
-    
+
     <!-- Настройка масштабирования для мобильных устройств -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Описание страницы для поисковых систем -->
-    <meta name="description" content="Библиотека аудиокниг по школьной программе для 7, 8 и 9 классов. Слушайте произведения из школьной программы онлайн.">
-    
+    <meta name="description"
+        content="Библиотека аудиокниг по школьной программе для 7, 8 и 9 классов. Слушайте произведения из школьной программы онлайн.">
+
     <!-- Ключевые слова -->
-    <meta name="keywords" content="аудиокниги, школьная программа, 7 класс, 8 класс, 9 класс, литература, слушать онлайн">
-    
+    <meta name="keywords"
+        content="аудиокниги, школьная программа, 7 класс, 8 класс, 9 класс, литература, слушать онлайн">
+
     <!-- Автор страницы -->
     <meta name="author" content="Uchitelnik">
-    
+
     <!-- Заголовок вкладки браузера -->
     <title>Библиотека аудиокниг | 7-9 классы</title>
-    
+
     <!-- Подключение файла стилей -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Иконка сайта (favicon) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
-</head>
-<body>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107244765', 'ym');
 
-        ym(107244765, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/107244765" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    <!-- Иконка сайта (favicon) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+
+<body>
+
     <!-- ================================================
          ШАПКА САЙТА
          ================================================ -->
@@ -62,10 +55,10 @@
          ================================================ -->
     <section class="filters">
         <h2>Фильтры</h2>
-        
+
         <!-- Контейнер для выпадающих списков -->
         <div class="filters-container">
-            
+
             <!-- Фильтр по классу -->
             <div class="filter-group">
                 <label for="classFilter">Класс:</label>
@@ -75,7 +68,7 @@
                     <!-- Остальные опции добавляются через JavaScript -->
                 </select>
             </div>
-            
+
             <!-- Фильтр по автору -->
             <div class="filter-group">
                 <label for="authorFilter">Автор:</label>
@@ -85,7 +78,7 @@
                     <!-- Остальные опции добавляются через JavaScript -->
                 </select>
             </div>
-            
+
             <!-- Фильтр по жанру -->
             <div class="filter-group">
                 <label for="genreFilter">Жанр:</label>
@@ -95,10 +88,10 @@
                     <!-- Остальные опции добавляются через JavaScript -->
                 </select>
             </div>
-            
+
             <!-- Кнопка сброса фильтров -->
             <button class="reset-btn" id="resetBtn">Сбросить фильтры</button>
-            
+
         </div>
     </section>
 
@@ -112,7 +105,7 @@
             <!-- Контейнер для отображения активных фильтров -->
             <div class="current-filters" id="currentFilters"></div>
         </div>
-        
+
         <!-- Контейнер для карточек книг -->
         <!-- Карточки добавляются через JavaScript -->
         <div class="books-grid" id="booksGrid">
@@ -133,5 +126,21 @@
          ПОДКЛЮЧЕНИЕ JAVASCRIPT
          ================================================ -->
     <script src="script.js"></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=107244765', 'ym');
+
+        ym(107244765, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/107244765" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </body>
+
 </html>
