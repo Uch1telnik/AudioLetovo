@@ -67,9 +67,105 @@
     "title": "Хитроумный идальго Дон Кихот Ламанчский",
     "author": "Сервантес Мигель де",
     "class": 7,
-    "genre": "Роман",
+    "genre": "Повесть",
     "coverUrl": "https://akniga.org/uploads/media/topic/2021/07/21/10/preview/8682fa07dfd011354fe0_400x.jpg",
     "audioUrl": "https://akniga.org/servantes-migel-de-hitroumnyy-idalgo-don-kihot-lamanchskiy-2"
+  },
+  {
+    "title": "Маленький принц",
+    "author": "Сент-Экзюпери Антуан",
+    "class": 7,
+    "genre": "Роман",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2025/11/18/21/preview/bb19675a6f6f98ccf47a_400x.png",
+    "audioUrl": "https://akniga.org/sent-ekzyuperi-antuan-malenkiy-princ-16"
+  },
+  {
+    "title": "Недоросль",
+    "author": "Фонвизин Денис",
+    "class": 8,
+    "genre": "Комедия",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2019/03/22/09/preview/8ac79c4374a2012e815c_400x.jpg",
+    "audioUrl": "https://akniga.org/fonvizin-denis-nedorosl"
+  },
+  {
+    "title": "Шинель",
+    "author": "Гоголь Николай",
+    "class": 8,
+    "genre": "Повесть",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2024/11/21/10/preview/be7e6e7ef041da30bc04_400x.jpg",
+    "audioUrl": "https://akniga.org/gogol-nikolay-shinel-5"
+  },
+  {
+    "title": "Бедные люди",
+    "author": "Достоевский Федор",
+    "class": 8,
+    "genre": "Роман",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2019/03/22/09/preview/3f0b356a59c8570a7c47_400x.jpg",
+    "audioUrl": "https://akniga.org/dostoevskiy-feder-bednye-lyudi"
+  },
+  {
+    "title": "Белые ночи",
+    "author": "Достоевский Федор",
+    "class": 8,
+    "genre": "Роман",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2019/03/22/09/preview/212e0a20acf6535e1453_400x.jpg",
+    "audioUrl": "https://akniga.org/dostoevskiy-fedor-belye-nochi"
+  },
+  {
+    "title": "Матрёнин двор",
+    "author": "Солженицын Александр",
+    "class": 8,
+    "genre": "Рассказ",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2020/03/12/07/preview/5eae75292c3554036316_400x.jpg",
+    "audioUrl": "https://akniga.org/solzhenicyn-aleksandr-matrenin-dvor"
+  },
+  {
+    "title": "Мещанин во дворянстве",
+    "author": "Мольер Жан-Батист",
+    "class": 8,
+    "genre": "Комедия",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2020/04/03/08/preview/dae653fac7649b5eae6c_400x.jpg",
+    "audioUrl": "https://akniga.org/moler-zhan-batist-meschanin-vo-dvoryanstve"
+  },
+  {
+    "title": "Гамлет",
+    "author": "Шекспир Уильям",
+    "class": 8,
+    "genre": "Пьеса",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2025/05/15/16/preview/11f931c677696c7eaec0_400x.jpg",
+    "audioUrl": "https://akniga.org/shekspir-uilyam-gamlet-1"
+  },
+  {
+    "title": "Фауст",
+    "author": "Гёте Иоганн Вольфганг",
+    "class": 8,
+    "genre": "Поэма",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2025/05/15/16/preview/11f931c677696c7eaec0_400x.jpg",
+    "audioUrl": "https://akniga.org/gete-iogann-volfgang-faust"
+  },
+  {
+    "title": "Мёртвые души",
+    "author": "Гоголь Николай",
+    "class": 9,
+    "genre": "Роман",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2021/12/09/12/preview/8a571be068ac2d28afae_400x.jpg",
+    "audioUrl": "https://akniga.org/gogol-nikolay-mertvye-dushi-2"
+  },
+  {
+    "title": "Горе от ума",
+    "author": "Грибоедов Александр",
+    "class": 9,
+    "genre": "Комедия",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2019/03/22/09/preview/abe6adb5e6280ab8d6c6_400x.jpg",
+    "audioUrl": "https://akniga.org/griboedov-aleksandr-gore-ot-uma"
+  },
+  {
+    "title": "Божественная комедия",
+    "author": "Алигьери Данте",
+    "class": 9,
+    "genre": "Поэма",
+    "coverUrl": "https://akniga.org/uploads/media/topic/2019/03/22/09/preview/0d9dc44fb9c4bb06a4ad_400x.jpg",
+    "audioUrl": "https://akniga.org/aligeri-dante-bozhestvennaya-komediya"
   },
   {
     "title": "Бедная Лиза",
