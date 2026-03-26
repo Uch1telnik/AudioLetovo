@@ -126,12 +126,52 @@
         /* === СЕКЦИЯ ФИЛЬТРОВ === */
         .filters {
             background-color: var(--card-bg);
-            padding: 20px;
             box-shadow: 0 2px 5px var(--shadow-color);
             position: sticky;
             top: 0;
             z-index: 100;
             transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .filters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .filters-header h2 {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .filters-toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .filters-header.collapsed .filters-toggle-icon {
+            transform: rotate(-180deg);
+        }
+
+        .filters-content {
+            padding: 0 20px 20px;
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .filters-content.collapsed {
+            max-height: 0;
+            padding: 0 20px;
+            opacity: 0;
         }
 
         .filters h2 {
@@ -581,8 +621,16 @@
                 font-size: 0.85rem;
             }
 
-            .filters {
-                padding: 15px;
+            .filters-header {
+                padding: 12px 15px;
+            }
+
+            .filters-content {
+                padding: 0 15px 15px;
+            }
+
+            .filters-content.collapsed {
+                padding: 0 15px;
             }
 
             .filters-container {
@@ -624,6 +672,11 @@
                 width: 38px;
                 height: 38px;
                 font-size: 1.1rem;
+            }
+
+            /* Скрываем заголовок фильтров на мобильных, показываем только в хедере */
+            .filters h2 {
+                display: none;
             }
         }
 
@@ -707,43 +760,48 @@
     </header>
 
     <section class="filters">
-        <h2>Фильтры</h2>
-        <div class="filters-container">
-            <div class="filter-group">
-                <label for="searchInput">Поиск по названию</label>
-                <input type="text" id="searchInput" placeholder="Введите название книги..." />
+        <div class="filters-header" id="filtersHeader">
+            <h2>Фильтры</h2>
+            <span class="filters-toggle-icon" id="filtersToggleIcon">▼</span>
+        </div>
+        <div class="filters-content" id="filtersContent">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="searchInput">Поиск по названию</label>
+                    <input type="text" id="searchInput" placeholder="Введите название книги..." />
+                </div>
+                <div class="filter-group">
+                    <label for="classFilter">Класс</label>
+                    <select id="classFilter">
+                        <option value="">Все классы</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="authorFilter">Автор</label>
+                    <select id="authorFilter">
+                        <option value="">Все авторы</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="genreFilter">Жанр</label>
+                    <select id="genreFilter">
+                        <option value="">Все жанры</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sortFilter">Сортировка</label>
+                    <select id="sortFilter">
+                        <option value="default">По умолчанию</option>
+                        <option value="title-asc">По названию (А-Я)</option>
+                        <option value="title-desc">По названию (Я-А)</option>
+                        <option value="author-asc">По автору (А-Я)</option>
+                        <option value="author-desc">По автору (Я-А)</option>
+                        <option value="class-asc">По классу (возр.)</option>
+                        <option value="class-desc">По классу (убыв.)</option>
+                    </select>
+                </div>
+                <button class="reset-btn" id="resetBtn">Сбросить</button>
             </div>
-            <div class="filter-group">
-                <label for="classFilter">Класс</label>
-                <select id="classFilter">
-                    <option value="">Все классы</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="authorFilter">Автор</label>
-                <select id="authorFilter">
-                    <option value="">Все авторы</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="genreFilter">Жанр</label>
-                <select id="genreFilter">
-                    <option value="">Все жанры</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="sortFilter">Сортировка</label>
-                <select id="sortFilter">
-                    <option value="default">По умолчанию</option>
-                    <option value="title-asc">По названию (А-Я)</option>
-                    <option value="title-desc">По названию (Я-А)</option>
-                    <option value="author-asc">По автору (А-Я)</option>
-                    <option value="author-desc">По автору (Я-А)</option>
-                    <option value="class-asc">По классу (возр.)</option>
-                    <option value="class-desc">По классу (убыв.)</option>
-                </select>
-            </div>
-            <button class="reset-btn" id="resetBtn">Сбросить</button>
         </div>
     </section>
 
@@ -760,7 +818,6 @@
 
     <footer>
         <p>Библиотека аудиокниг | Социальный проект 2026</p>
-        <p>Форма обратной связи: https://clck.ru/3SmWZG</p>
     </footer>
 
     <script>
@@ -774,6 +831,7 @@
         - Поиск по названию книги
         - Сортировка книг
         - Тёмная тема
+        - Сворачивание панели фильтров на мобильных
         - Обработку ошибок при загрузке
         ═══════════════════════════════════════════════════════════════════════════
         */
@@ -795,18 +853,66 @@
         const booksCount = document.getElementById('booksCount');
         const currentFiltersDiv = document.getElementById('currentFilters');
         const themeToggle = document.getElementById('themeToggle');
+        const filtersHeader = document.getElementById('filtersHeader');
+        const filtersContent = document.getElementById('filtersContent');
+        const filtersToggleIcon = document.getElementById('filtersToggleIcon');
 
         // ─────────────────────────────────────────────────────────────────────────────
         // ОСНОВНАЯ ФУНКЦИЯ ЗАГРУЗКИ СТРАНИЦЫ
         // ─────────────────────────────────────────────────────────────────────────────
         document.addEventListener('DOMContentLoaded', function() {
-            // Загрузка сохранённой темы
             loadTheme();
-            // Показываем индикатор загрузки
+            initFiltersCollapse();
             showLoading();
-            // Загружаем данные из JSON-файла
             loadBooksData();
         });
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ИНИЦИАЛИЗАЦИИ СВЁРТЫВАНИЯ ФИЛЬТРОВ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function initFiltersCollapse() {
+            // Проверяем, мобильное ли устройство
+            const isMobile = window.innerWidth <= 480;
+
+            // На мобильных по умолчанию сворачиваем фильтры
+            if (isMobile) {
+                collapseFilters();
+            }
+
+            // Обработчик клика на заголовок фильтров
+            filtersHeader.addEventListener('click', toggleFilters);
+
+            // Обработчик изменения размера окна
+            window.addEventListener('resize', function() {
+                const isMobileNow = window.innerWidth <= 480;
+                if (!isMobileNow) {
+                    expandFilters();
+                }
+            });
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ПЕРЕКЛЮЧЕНИЯ ВИДИМОСТИ ФИЛЬТРОВ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function toggleFilters() {
+            if (filtersContent.classList.contains('collapsed')) {
+                expandFilters();
+            } else {
+                collapseFilters();
+            }
+        }
+
+        function collapseFilters() {
+            filtersContent.classList.add('collapsed');
+            filtersHeader.classList.add('collapsed');
+            filtersToggleIcon.textContent = '▼';
+        }
+
+        function expandFilters() {
+            filtersContent.classList.remove('collapsed');
+            filtersHeader.classList.remove('collapsed');
+            filtersToggleIcon.textContent = '▲';
+        }
 
         // ─────────────────────────────────────────────────────────────────────────────
         // ФУНКЦИЯ ЗАГРУЗКИ ДАННЫХ ИЗ JSON
@@ -981,7 +1087,6 @@
             const searchTerm = searchInput.value.trim().toLowerCase();
             const sortValue = sortFilter.value;
 
-            // Фильтрация
             let filteredBooks = allBooks.filter(book => {
                 const matchesClass = !selectedClass || book.class == selectedClass;
                 const matchesAuthor = !selectedAuthor || book.author === selectedAuthor;
@@ -993,7 +1098,6 @@
                 return matchesClass && matchesAuthor && matchesGenre && matchesSearch;
             });
 
-            // Сортировка
             filteredBooks = sortBooks(filteredBooks, sortValue);
 
             currentBooks = filteredBooks;
@@ -1026,7 +1130,6 @@
                     sortedBooks.sort((a, b) => b.class - a.class);
                     break;
                 default:
-                    // По умолчанию - без сортировки
                     break;
             }
 
@@ -1101,7 +1204,6 @@
             }
         }
 
-        // Функции для очистки отдельных фильтров
         function clearSearch() {
             searchInput.value = '';
             applyFilters();
