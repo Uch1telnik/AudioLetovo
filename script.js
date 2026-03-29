@@ -232,7 +232,9 @@ function createBookCard(book) {
                 src="${book.coverUrl}"
                 alt="Обложка книги: ${book.title}"
                 onerror="this.parentElement.innerHTML = window.createPlaceholder('${book.title.replace(/'/g, "\\'")}')"
+                onload="this.classList.add('loaded')"
                 loading="lazy"
+                decoding="async"
             >
         </div>
 
@@ -256,6 +258,12 @@ function createBookCard(book) {
             </a>
         </div>
     `;
+
+    // Добавляем fetchpriority="high" для первых 4 карточек (above the fold)
+    const img = card.querySelector('img');
+    if (booksGrid.children.length < 4) {
+        img.setAttribute('fetchpriority', 'high');
+    }
 
     return card;
 }

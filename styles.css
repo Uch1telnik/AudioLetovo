@@ -321,7 +321,8 @@ main {
 /* === ОБЛОЖКА КНИГИ === */
 .book-cover {
     width: 100%;
-    height: 250px;
+    aspect-ratio: 3/4;
+    min-height: 200px;
     overflow: hidden;
     background-color: var(--bg-color);
     position: relative;
@@ -332,14 +333,23 @@ main {
 .book-cover img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
     display: block;
 }
 
 .book-card:hover .book-cover img {
     transform: scale(1.05);
+}
+
+/* Blur-up эффект при загрузке */
+.book-cover img {
+    filter: blur(10px);
+}
+
+.book-cover img.loaded {
+    filter: blur(0);
 }
 
 .book-cover .placeholder {
@@ -351,7 +361,7 @@ main {
     align-items: center;
     background: var(--placeholder-bg);
     color: #FFFFFF;
-    transition: background var(--transition-speed) ease;
+    transition: background var(--transition-speed) ease, opacity 0.3s ease;
 }
 
 .book-cover .placeholder-icon {
@@ -562,10 +572,6 @@ footer p {
         min-width: 150px;
     }
 
-    .book-cover {
-        height: 200px;
-    }
-
     main {
         padding: 15px;
     }
@@ -627,10 +633,6 @@ footer p {
         width: 100%;
     }
 
-    .book-cover {
-        height: 220px;
-    }
-
     .book-info {
         padding: 12px;
     }
@@ -665,10 +667,6 @@ footer p {
 @media (max-width: 320px) {
     header h1 {
         font-size: 1.1rem;
-    }
-
-    .book-cover {
-        height: 180px;
     }
 
     .book-title {
