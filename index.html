@@ -7,9 +7,766 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /*
+        ═══════════════════════════════════════════════════════════════════════════
+                       БИБЛИОТЕКА АУДИОКНИГ - СТИЛИ
+        Цветовая схема (Светлая тема):
+        • Основной синий: #003366 (заголовки, кнопки, акценты)
+        • Фон: #FFFFFF (белый)
+        • Светло-серый: #F5F5F5 (альтернативный фон)
+        • Текст: #333333 (основной текст)
+        ═══════════════════════════════════════════════════════════════════════════
+        */
+
+        /* === CSS ПЕРЕМЕННЫЕ ДЛЯ ТЕМ === */
+        :root {
+            --primary-blue: #003366;
+            --primary-blue-dark: #002244;
+            --primary-blue-light: #004d99;
+            --bg-color: #F5F5F5;
+            --card-bg: #FFFFFF;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --border-color: #E0E0E0;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 51, 102, 0.2);
+            --placeholder-bg: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            --badge-bg: rgba(0, 51, 102, 0.1);
+            --error-bg: #FFE5E5;
+            --error-text: #660000;
+            --error-title: #CC0000;
+            --transition-speed: 0.3s;
+        }
+
+        /* === ТЁМНАЯ ТЕМА === */
+        [data-theme="dark"] {
+            --primary-blue: #4a9eff;
+            --primary-blue-dark: #2980d9;
+            --primary-blue-light: #6eb3ff;
+            --bg-color: #1a1a2e;
+            --card-bg: #16213e;
+            --text-color: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border-color: #2d2d44;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(74, 158, 255, 0.3);
+            --placeholder-bg: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            --badge-bg: rgba(74, 158, 255, 0.2);
+            --error-bg: #3d1a1a;
+            --error-text: #ff9999;
+            --error-title: #ff6666;
+        }
+
+        /* === БАЗОВЫЕ СТИЛИ === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        /* === ШАПКА САЙТА === */
+        header {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Кнопка переключения темы */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1.3rem;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* === СЕКЦИЯ ФИЛЬТРОВ === */
+        .filters {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 5px var(--shadow-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .filters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .filters-header h2 {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .filters-toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .filters-header.collapsed .filters-toggle-icon {
+            transform: rotate(-180deg);
+        }
+
+        .filters-content {
+            padding: 0 20px 20px;
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .filters-content.collapsed {
+            max-height: 0;
+            padding: 0 20px;
+            opacity: 0;
+        }
+
+        .filters h2 {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 180px;
+            flex: 1;
+        }
+
+        .filter-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 10px 12px;
+            font-size: 0.95rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed) ease;
+        }
+
+        .filter-group select:hover,
+        .filter-group input:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.2);
+        }
+
+        [data-theme="dark"] .filter-group select:focus,
+        [data-theme="dark"] .filter-group input:focus {
+            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.3);
+        }
+
+        .reset-btn {
+            padding: 10px 20px;
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .reset-btn:hover {
+            background-color: var(--primary-blue-dark);
+            transform: translateY(-2px);
+        }
+
+        .reset-btn:active {
+            transform: translateY(0);
+        }
+
+        /* === ОСНОВНОЙ КОНТЕНТ === */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .info-bar {
+            background-color: var(--card-bg);
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .info-bar p {
+            color: var(--primary-blue);
+            font-weight: 500;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .current-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-tag {
+            background-color: var(--badge-bg);
+            color: var(--primary-blue);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        .filter-tag button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .filter-tag button:hover {
+            opacity: 1;
+        }
+
+        /* === СЕТКА КАРТОЧЕК === */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        /* === КАРТОЧКА КНИГИ === */
+        .book-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px var(--shadow-hover);
+        }
+
+        /* === ОБЛОЖКА КНИГИ === */
+        .book-cover {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            position: relative;
+            flex-shrink: 0;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .book-card:hover .book-cover img {
+            transform: scale(1.05);
+        }
+
+        .book-cover .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--placeholder-bg);
+            color: #FFFFFF;
+            transition: background var(--transition-speed) ease;
+        }
+
+        .book-cover .placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .book-cover .placeholder-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        /* === ИНФОРМАЦИЯ О КНИГЕ === */
+        .book-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .book-author {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .book-meta {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .class-badge {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .genre-badge {
+            background-color: var(--badge-bg);
+            color: var(--primary-blue);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        /* === КНОПКА СЛУШАТЬ === */
+        .listen-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .listen-btn:hover {
+            background-color: var(--primary-blue-dark);
+        }
+
+        /* === СООБЩЕНИЕ ОТСУТСТВИЯ КНИГ === */
+        .no-books {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .no-books-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .no-books h3 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .no-books p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            transition: color var(--transition-speed) ease;
+        }
+
+        /* === СОСТОЯНИЕ ЗАГРУЗКИ === */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+            transition: border-color var(--transition-speed) ease;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading p {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            transition: color var(--transition-speed) ease;
+        }
+
+        /* === СООБЩЕНИЕ ОБ ОШИБКЕ === */
+        .error-message {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--error-bg);
+            border-radius: 12px;
+            margin: 20px;
+            grid-column: 1 / -1;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .error-message h3 {
+            color: var(--error-title);
+            margin-bottom: 10px;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .error-message p {
+            color: var(--error-text);
+            transition: color var(--transition-speed) ease;
+        }
+
+        /* === ПОДВАЛ САЙТА === */
+        footer {
+            background-color: var(--primary-blue);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+                               АДАПТИВНЫЙ ДИЗАЙН
+        ════════════════════════════════════════════════════════════════════════════ */
+
+        /* === ПЛАНШЕТЫ (до 1024px) === */
+        @media (max-width: 1024px) {
+            .books-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* === МАЛЕНЬКИЕ ПЛАНШЕТЫ (до 768px) === */
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .filter-group {
+                min-width: 150px;
+            }
+
+            .book-cover {
+                height: 200px;
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            .info-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .theme-toggle {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* === МОБИЛЬНЫЕ ТЕЛЕФОНЫ (до 480px) === */
+        @media (max-width: 480px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            header {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 1.3rem;
+            }
+
+            header p {
+                font-size: 0.85rem;
+            }
+
+            .filters-header {
+                padding: 12px 15px;
+            }
+
+            .filters-content {
+                padding: 0 15px 15px;
+            }
+
+            .filters-content.collapsed {
+                padding: 0 15px;
+            }
+
+            .filters-container {
+                flex-direction: column;
+            }
+
+            .filter-group {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .reset-btn {
+                width: 100%;
+            }
+
+            .book-cover {
+                height: 220px;
+            }
+
+            .book-info {
+                padding: 12px;
+            }
+
+            .book-title {
+                font-size: 1rem;
+            }
+
+            .book-author {
+                font-size: 0.85rem;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+
+            /* Скрываем заголовок фильтров на мобильных, показываем только в хедере */
+            .filters h2 {
+                display: none;
+            }
+        }
+
+        /* === ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (до 320px) === */
+        @media (max-width: 320px) {
+            header h1 {
+                font-size: 1.1rem;
+            }
+
+            .book-cover {
+                height: 180px;
+            }
+
+            .book-title {
+                font-size: 0.95rem;
+            }
+
+            .book-meta {
+                gap: 5px;
+            }
+
+            .class-badge,
+            .genre-badge {
+                font-size: 0.75rem;
+                padding: 3px 8px;
+            }
+        }
+
+        /* === ПЕЧАТЬ === */
+        @media print {
+            .filters,
+            .listen-btn,
+            .theme-toggle {
+                display: none;
+            }
+
+            .book-card {
+                box-shadow: none;
+                border: 1px solid #CCCCCC;
+                break-inside: avoid;
+            }
+
+            .books-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* === АНИМАЦИИ === */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .book-card {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .book-card:nth-child(1) { animation-delay: 0.05s; }
+        .book-card:nth-child(2) { animation-delay: 0.1s; }
+        .book-card:nth-child(3) { animation-delay: 0.15s; }
+        .book-card:nth-child(4) { animation-delay: 0.2s; }
+        .book-card:nth-child(5) { animation-delay: 0.25s; }
+        .book-card:nth-child(6) { animation-delay: 0.3s; }
+        .book-card:nth-child(7) { animation-delay: 0.35s; }
+        .book-card:nth-child(8) { animation-delay: 0.4s; }
+    </style>
 </head>
 <body>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107244765', 'ym');
+
+        ym(107244765, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107244765" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+
+
     <header>
         <h1>Библиотека аудиокниг</h1>
         <p>Произведения школьной программы для 7-9 классов</p>
@@ -79,6 +836,441 @@
         <p>Библиотека аудиокниг | Социальный проект 2026</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        /**
+        ═══════════════════════════════════════════════════════════════════════════
+                       БИБЛИОТЕКА АУДИОКНИГ - JAVASCRIPT
+        Этот файл отвечает за:
+        - Загрузку данных из файла books.json
+        - Отображение карточек книг на странице
+        - Работу фильтров (по классу, автору, жанру)
+        - Поиск по названию книги
+        - Сортировка книг
+        - Тёмная тема
+        - Сворачивание панели фильтров на мобильных
+        - Обработку ошибок при загрузке
+        ═══════════════════════════════════════════════════════════════════════════
+        */
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
+        // ─────────────────────────────────────────────────────────────────────────────
+        let allBooks = [];
+        let currentBooks = [];
+
+        // Ссылки на HTML-элементы
+        const booksGrid = document.getElementById('booksGrid');
+        const classFilter = document.getElementById('classFilter');
+        const authorFilter = document.getElementById('authorFilter');
+        const genreFilter = document.getElementById('genreFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const searchInput = document.getElementById('searchInput');
+        const resetBtn = document.getElementById('resetBtn');
+        const booksCount = document.getElementById('booksCount');
+        const currentFiltersDiv = document.getElementById('currentFilters');
+        const themeToggle = document.getElementById('themeToggle');
+        const filtersHeader = document.getElementById('filtersHeader');
+        const filtersContent = document.getElementById('filtersContent');
+        const filtersToggleIcon = document.getElementById('filtersToggleIcon');
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ОСНОВНАЯ ФУНКЦИЯ ЗАГРУЗКИ СТРАНИЦЫ
+        // ─────────────────────────────────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            initFiltersCollapse();
+            showLoading();
+            loadBooksData();
+        });
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ИНИЦИАЛИЗАЦИИ СВЁРТЫВАНИЯ ФИЛЬТРОВ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function initFiltersCollapse() {
+            // Проверяем, мобильное ли устройство
+            const isMobile = window.innerWidth <= 480;
+
+            // На мобильных по умолчанию сворачиваем фильтры
+            if (isMobile) {
+                collapseFilters();
+            }
+
+            // Обработчик клика на заголовок фильтров
+            filtersHeader.addEventListener('click', toggleFilters);
+
+            // Обработчик изменения размера окна
+            window.addEventListener('resize', function() {
+                const isMobileNow = window.innerWidth <= 480;
+                if (!isMobileNow) {
+                    expandFilters();
+                }
+            });
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ПЕРЕКЛЮЧЕНИЯ ВИДИМОСТИ ФИЛЬТРОВ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function toggleFilters() {
+            if (filtersContent.classList.contains('collapsed')) {
+                expandFilters();
+            } else {
+                collapseFilters();
+            }
+        }
+
+        function collapseFilters() {
+            filtersContent.classList.add('collapsed');
+            filtersHeader.classList.add('collapsed');
+            filtersToggleIcon.textContent = '▼';
+        }
+
+        function expandFilters() {
+            filtersContent.classList.remove('collapsed');
+            filtersHeader.classList.remove('collapsed');
+            filtersToggleIcon.textContent = '▲';
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ЗАГРУЗКИ ДАННЫХ ИЗ JSON
+        // ─────────────────────────────────────────────────────────────────────────────
+        async function loadBooksData() {
+            try {
+                const response = await fetch('books.json');
+                if (!response.ok) {
+                    throw new Error(`Ошибка загрузки: ${response.status}`);
+                }
+                const data = await response.json();
+                allBooks = data;
+                currentBooks = [...allBooks];
+                populateFilters();
+                displayBooks(currentBooks);
+                setupEventListeners();
+            } catch (error) {
+                console.error('Ошибка при загрузке данных:', error);
+                showError('Не удалось загрузить список книг. Проверьте файл books.json');
+            }
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ОТОБРАЖЕНИЯ ИНДИКАТОРА ЗАГРУЗКИ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function showLoading() {
+            booksGrid.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Загружаем библиотеку аудиокниг...</p>
+                </div>
+            `;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ОТОБРАЖЕНИЯ ОШИБКИ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function showError(message) {
+            booksGrid.innerHTML = `
+                <div class="error-message">
+                    <h3>Ошибка</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ЗАПОЛНЕНИЯ ФИЛЬТРОВ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function populateFilters() {
+            const classes = new Set();
+            const authors = new Set();
+            const genres = new Set();
+
+            allBooks.forEach(book => {
+                classes.add(book.class);
+                authors.add(book.author);
+                genres.add(book.genre);
+            });
+
+            Array.from(classes).sort((a, b) => a - b).forEach(classNum => {
+                const option = document.createElement('option');
+                option.value = classNum;
+                option.textContent = `${classNum} класс`;
+                classFilter.appendChild(option);
+            });
+
+            Array.from(authors).sort().forEach(author => {
+                const option = document.createElement('option');
+                option.value = author;
+                option.textContent = author;
+                authorFilter.appendChild(option);
+            });
+
+            Array.from(genres).sort().forEach(genre => {
+                const option = document.createElement('option');
+                option.value = genre;
+                option.textContent = genre;
+                genreFilter.appendChild(option);
+            });
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ОТОБРАЖЕНИЯ КНИГ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function displayBooks(books) {
+            booksGrid.innerHTML = '';
+            booksCount.textContent = `Найдено книг: ${books.length}`;
+
+            if (books.length === 0) {
+                booksGrid.innerHTML = `
+                    <div class="no-books">
+                        <div class="no-books-icon"></div>
+                        <h3>Книги не найдены</h3>
+                        <p>Попробуйте изменить параметры фильтрации</p>
+                    </div>
+                `;
+                return;
+            }
+
+            books.forEach(book => {
+                const card = createBookCard(book);
+                booksGrid.appendChild(card);
+            });
+
+            updateCurrentFilters();
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ СОЗДАНИЯ КАРТОЧКИ КНИГИ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function createBookCard(book) {
+            const card = document.createElement('article');
+            card.className = 'book-card';
+
+            const placeholderImage = 'https://image.qwenlm.ai/public_source/220031a5-87c5-4ae9-ac95-2d6a7958e884/193da7e38-b135-4dfb-8f83-e2264d00dc72.png';
+
+            card.innerHTML = `
+                <div class="book-cover">
+                    <img
+                        src="${book.coverUrl || placeholderImage}"
+                        alt="Обложка: ${book.title}"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    />
+                    <div class="placeholder" style="display: none;">
+                        <div class="placeholder-icon"></div>
+                        <div class="placeholder-text">${book.title.length > 30 ? book.title.substring(0, 30) + '...' : book.title}</div>
+                    </div>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">${book.title}</h3>
+                    <p class="book-author">${book.author}</p>
+                    <div class="book-meta">
+                        <span class="class-badge">${book.class} класс</span>
+                        <span class="genre-badge">${book.genre}</span>
+                    </div>
+                    <a
+                        href="${book.audioUrl}"
+                        class="listen-btn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Открыть аудиокнигу в новой вкладке"
+                    >
+                        Слушать
+                    </a>
+                </div>
+            `;
+
+            return card;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ УСТАНОВКИ ОБРАБОТЧИКОВ СОБЫТИЙ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function setupEventListeners() {
+            classFilter.addEventListener('change', applyFilters);
+            authorFilter.addEventListener('change', applyFilters);
+            genreFilter.addEventListener('change', applyFilters);
+            sortFilter.addEventListener('change', applyFilters);
+            searchInput.addEventListener('input', applyFilters);
+            resetBtn.addEventListener('click', resetFilters);
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ПРИМЕНЕНИЯ ФИЛЬТРОВ И СОРТИРОВКИ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function applyFilters() {
+            const selectedClass = classFilter.value;
+            const selectedAuthor = authorFilter.value;
+            const selectedGenre = genreFilter.value;
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const sortValue = sortFilter.value;
+
+            let filteredBooks = allBooks.filter(book => {
+                const matchesClass = !selectedClass || book.class == selectedClass;
+                const matchesAuthor = !selectedAuthor || book.author === selectedAuthor;
+                const matchesGenre = !selectedGenre || book.genre === selectedGenre;
+                const matchesSearch = !searchTerm ||
+                    book.title.toLowerCase().includes(searchTerm) ||
+                    book.author.toLowerCase().includes(searchTerm);
+
+                return matchesClass && matchesAuthor && matchesGenre && matchesSearch;
+            });
+
+            filteredBooks = sortBooks(filteredBooks, sortValue);
+
+            currentBooks = filteredBooks;
+            displayBooks(filteredBooks);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ СОРТИРОВКИ КНИГ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function sortBooks(books, sortValue) {
+            const sortedBooks = [...books];
+
+            switch (sortValue) {
+                case 'title-asc':
+                    sortedBooks.sort((a, b) => a.title.localeCompare(b.title, 'ru'));
+                    break;
+                case 'title-desc':
+                    sortedBooks.sort((a, b) => b.title.localeCompare(a.title, 'ru'));
+                    break;
+                case 'author-asc':
+                    sortedBooks.sort((a, b) => a.author.localeCompare(b.author, 'ru'));
+                    break;
+                case 'author-desc':
+                    sortedBooks.sort((a, b) => b.author.localeCompare(a.author, 'ru'));
+                    break;
+                case 'class-asc':
+                    sortedBooks.sort((a, b) => a.class - b.class);
+                    break;
+                case 'class-desc':
+                    sortedBooks.sort((a, b) => b.class - a.class);
+                    break;
+                default:
+                    break;
+            }
+
+            return sortedBooks;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ СБРОСА ФИЛЬТРОВ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function resetFilters() {
+            classFilter.value = '';
+            authorFilter.value = '';
+            genreFilter.value = '';
+            sortFilter.value = 'default';
+            searchInput.value = '';
+            displayBooks(allBooks);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИЯ ОБНОВЛЕНИЯ ОТОБРАЖЕНИЯ АКТИВНЫХ ФИЛЬТРОВ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function updateCurrentFilters() {
+            currentFiltersDiv.innerHTML = '';
+
+            const selectedClass = classFilter.value;
+            const selectedAuthor = authorFilter.value;
+            const selectedGenre = genreFilter.value;
+            const searchTerm = searchInput.value.trim();
+            const sortValue = sortFilter.value;
+
+            if (searchTerm) {
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `"${searchTerm}" <button onclick="clearSearch()">×</button>`;
+                currentFiltersDiv.appendChild(tag);
+            }
+
+            if (selectedClass) {
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `${selectedClass} класс <button onclick="clearClassFilter()">×</button>`;
+                currentFiltersDiv.appendChild(tag);
+            }
+
+            if (selectedAuthor) {
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `${selectedAuthor} <button onclick="clearAuthorFilter()">×</button>`;
+                currentFiltersDiv.appendChild(tag);
+            }
+
+            if (selectedGenre) {
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `${selectedGenre} <button onclick="clearGenreFilter()">×</button>`;
+                currentFiltersDiv.appendChild(tag);
+            }
+
+            if (sortValue && sortValue !== 'default') {
+                const sortLabels = {
+                    'title-asc': 'Название (А-Я)',
+                    'title-desc': 'Название (Я-А)',
+                    'author-asc': 'Автор (А-Я)',
+                    'author-desc': 'Автор (Я-А)',
+                    'class-asc': 'Класс (возр.)',
+                    'class-desc': 'Класс (убыв.)'
+                };
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `${sortLabels[sortValue]} <button onclick="clearSortFilter()">×</button>`;
+                currentFiltersDiv.appendChild(tag);
+            }
+        }
+
+        function clearSearch() {
+            searchInput.value = '';
+            applyFilters();
+        }
+
+        function clearClassFilter() {
+            classFilter.value = '';
+            applyFilters();
+        }
+
+        function clearAuthorFilter() {
+            authorFilter.value = '';
+            applyFilters();
+        }
+
+        function clearGenreFilter() {
+            genreFilter.value = '';
+            applyFilters();
+        }
+
+        function clearSortFilter() {
+            sortFilter.value = 'default';
+            applyFilters();
+        }
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // ФУНКЦИИ ТЁМНОЙ ТЕМЫ
+        // ─────────────────────────────────────────────────────────────────────────────
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+            themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему');
+        }
+
+        // ═══════════════════════════════════════════════════════════════════════════
+        // КОНЕЦ ФАЙЛА
+        // ═══════════════════════════════════════════════════════════════════════════
+    </script>
 </body>
 </html>
+
